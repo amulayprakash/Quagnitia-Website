@@ -378,28 +378,34 @@ function ProjectCard({ p, onOpenCarousel, theme }) {
   const thumb = (p.images && p.images[0]) || "";
   return (
     <article
-      className="flex gap-3 p-3 rounded-lg"
+      className="flex flex-col sm:flex-row gap-3 p-3 rounded-lg transition-colors"
       style={{
         border: `1px solid ${theme.border}`,
         background: theme.card,
-        alignItems: "center",
+        alignItems: "stretch",
       }}
     >
       <img
         src={thumb}
         alt={p.title}
-        className="w-20 h-12 sm:w-24 sm:h-16 object-cover rounded"
+        className="w-full h-36 sm:w-24 sm:h-16 object-cover rounded"
         style={{ flexShrink: 0 }}
       />
-      <div style={{ flex: 1 }}>
-        <h4 className="font-semibold text-sm" style={{ color: theme.text }}>
+      <div style={{ flex: 1 }} className="space-y-1">
+        <h4
+          className="font-semibold text-sm sm:text-base"
+          style={{ color: theme.text }}
+        >
           {p.title}
         </h4>
-        <p className="text-xs leading-tight" style={{ color: theme.muted }}>
+        <p
+          className="text-xs sm:text-sm leading-tight"
+          style={{ color: theme.muted }}
+        >
           {p.short}
         </p>
         <div
-          className="mt-2 flex items-center gap-2 text-xs"
+          className="pt-2 flex flex-wrap items-center gap-2 text-xs"
           style={{ color: theme.muted }}
         >
           <div className="text-[11px]">{p.date}</div>
@@ -611,27 +617,34 @@ function PortalModal({
   const overlayStyle = {
     position: "fixed",
     inset: 0,
-    backgroundColor: `${"#000"}66`,
+    backgroundColor: "rgba(2,6,23,0.85)",
     display: "flex",
-    alignItems: "center",
+    alignItems: isMobile ? "flex-start" : "center",
     justifyContent: "center",
     WebkitOverflowScrolling: "touch",
     zIndex: 100000,
+    overflowY: "auto",
+    padding: isMobile ? "0" : "1rem",
   };
 
   const panelStyle = {
     width: "100%",
     maxWidth: isMobile ? "100%" : "64rem",
-    maxHeight: isMobile ? "100vh" : "80vh",
-    overflow: "auto",
-    borderRadius: isMobile ? 0 : 12,
+    minHeight: isMobile ? "100vh" : "auto",
+    maxHeight: isMobile ? "none" : "80vh",
+    overflow: "hidden",
+    borderRadius: isMobile ? "32px 32px 0 0" : 12,
     backgroundColor: "#fff",
     border: `1px solid ${theme?.border ?? "#e5e7eb"}`,
-    padding: isMobile ? "0" : "1.25rem",
-    boxShadow: "0 10px 30px rgba(2,6,23,0.6)",
+    padding: isMobile
+      ? "1.25rem 1rem calc(env(safe-area-inset-bottom) + 1.5rem)"
+      : "1.25rem",
+    boxShadow: "0 10px 40px rgba(2,6,23,0.8)",
     position: "relative",
     pointerEvents: "auto",
     zIndex: 100001,
+    display: "flex",
+    flexDirection: "column",
   };
 
   const closeBtnStyle = {
@@ -695,7 +708,16 @@ function PortalModal({
         </button>
 
         {/* children area */}
-        <div style={{ paddingTop: 8 }}>{children}</div>
+        <div
+          style={{
+            paddingTop: isMobile ? 0 : 8,
+            flex: 1,
+            overflowY: "auto",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );
@@ -748,6 +770,7 @@ function renderServiceModalContent(
     fontSize: 12,
     fontWeight: 600,
     textDecoration: "none",
+    whiteSpace: "nowrap",
   };
 
   const makeLink = (label, href) => (href ? { label, href } : null);
@@ -763,7 +786,14 @@ function renderServiceModalContent(
         >
           {title}
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div
+          className={`flex gap-2 ${
+            isMobile ? "overflow-x-auto pb-1 touch-pan-x snap-x" : "flex-wrap"
+          }`}
+          style={{
+            flexWrap: isMobile ? "nowrap" : "wrap",
+          }}
+        >
           {filtered.map((link) => (
             <a
               key={title + link.label}
@@ -775,6 +805,52 @@ function renderServiceModalContent(
               <span>{link.label}</span>
               <ArrowRight className="w-3 h-3" strokeWidth={1.5} />
             </a>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const renderCapabilityGrid = (capabilities = {}) => {
+    if (!capabilities) return null;
+    const entries = Object.entries(capabilities).filter(
+      ([, value]) => Array.isArray(value) && value.length > 0
+    );
+    if (!entries.length) return null;
+
+    return (
+      <div className="space-y-2">
+        <div className="text-sm font-semibold" style={{ color: theme.text }}>
+          Capabilities
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {entries.map(([label, items]) => (
+            <div
+              key={label}
+              className="rounded-xl p-3"
+              style={{
+                border: `1px solid ${theme.border}`,
+                background: theme.card,
+              }}
+            >
+              <div
+                className="text-[11px] uppercase tracking-wide font-semibold"
+                style={{ color: theme.muted }}
+              >
+                {label}
+              </div>
+              <ul
+                className="mt-2 space-y-1.5 text-sm"
+                style={{ color: theme.text }}
+              >
+                {items.map((item) => (
+                  <li key={`${label}-${item}`} className="flex gap-2">
+                    <span style={{ color: theme.accent }}>•</span>
+                    <span className="flex-1">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
@@ -811,7 +887,7 @@ function renderServiceModalContent(
           <div
             role="tablist"
             aria-label="Project detail tabs"
-            className="flex gap-2 overflow-x-auto pb-1"
+            className="flex gap-2 overflow-x-auto pb-1 touch-pan-x snap-x snap-mandatory"
           >
             {projects.map((p, idx) => {
               const active = idx === activeProjectIndex;
@@ -821,13 +897,16 @@ function renderServiceModalContent(
                   role="tab"
                   aria-selected={active}
                   aria-controls={`project-panel-${p.id}`}
-                  className={`px-3 py-2 rounded-xl text-left transition-colors ${
-                    active ? "shadow-md" : "opacity-80 hover:opacity-100"
+                  id={`project-tab-${p.id}`}
+                  className={`px-3 py-2 rounded-xl text-left transition-colors snap-start ${
+                    active
+                      ? "shadow-lg shadow-indigo-200"
+                      : "opacity-80 hover:opacity-100"
                   }`}
                   style={{
                     border: `1px solid ${active ? theme.accent : theme.border}`,
                     background: active ? theme.card : "transparent",
-                    minWidth: 160,
+                    minWidth: isMobile ? 220 : 160,
                   }}
                   onClick={() => onProjectTabChange(idx)}
                 >
@@ -856,18 +935,20 @@ function renderServiceModalContent(
           <div
             id={`project-panel-${activeProject.id}`}
             role="tabpanel"
-            aria-labelledby={activeProject.id}
+            aria-labelledby={`project-tab-${activeProject.id}`}
             className="space-y-5"
           >
             <div
-              className="rounded-2xl p-4 md:p-6"
+              className="rounded-2xl p-4 md:p-6 space-y-4"
               style={{
                 border: `1px solid ${theme.border}`,
-                background: isDarkTheme(theme) ? "rgba(15,23,42,0.6)" : "#fff",
+                background: isDarkTheme(theme)
+                  ? "rgba(15,23,42,0.6)"
+                  : "rgba(255,255,255,0.95)",
                 boxShadow: "0 12px 30px rgba(15,23,42,0.12)",
               }}
             >
-              <div className="flex flex-col gap-4 lg:flex-row">
+              <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
                 <div className="flex-1 space-y-4">
                   <div className="flex flex-wrap gap-3 text-xs">
                     <span
@@ -892,7 +973,7 @@ function renderServiceModalContent(
                       </span>
                     )}
                   </div>
-                  <div>
+                  <div className="space-y-1">
                     <h4
                       className="text-lg md:text-xl font-semibold"
                       style={{ color: theme.text }}
@@ -955,7 +1036,7 @@ function renderServiceModalContent(
                   </div>
                 </div>
                 {activeProject.images && activeProject.images.length > 0 && (
-                  <div className="w-full lg:w-64">
+                  <div className="w-full lg:w-64 order-first lg:order-last space-y-3">
                     <div
                       className="rounded-xl overflow-hidden"
                       style={{
@@ -966,10 +1047,10 @@ function renderServiceModalContent(
                       <img
                         src={activeProject.images[0]}
                         alt={`${activeProject.title}-cover`}
-                        className="w-full h-48 object-cover"
+                        className="w-full h-52 object-cover"
                       />
                     </div>
-                    <div className="mt-3 flex gap-2 overflow-x-auto">
+                    <div className="mt-1 flex gap-2 overflow-x-auto touch-pan-x">
                       {activeProject.images.slice(0, 5).map((src, idx) => (
                         <button
                           key={src + idx}
@@ -1000,34 +1081,37 @@ function renderServiceModalContent(
 
             {activeProject ? (
               <div className="space-y-5">
-                {renderLinkGroup("Contract", [
-                  makeLink("Etherscan", activeProject.contract?.etherscan),
-                  makeLink("Uniswap", activeProject.contract?.uniswap),
-                ])}
-                {renderLinkGroup("Documentation", [
-                  makeLink("Tokenomics", activeProject.docs?.tokenomics),
-                  makeLink("Whitepaper", activeProject.docs?.whitepaper),
-                ])}
-                {renderLinkGroup("Branding", [
-                  makeLink("Logo", activeProject.branding?.logo),
-                ])}
-                {renderLinkGroup("Socials", [
-                  makeLink("Instagram", activeProject.socials?.instagram),
-                  makeLink("Twitter / X", activeProject.socials?.twitter),
-                  makeLink("Medium", activeProject.socials?.medium),
-                  makeLink("LinkedIn", activeProject.socials?.linkedin),
-                ])}
-                {renderLinkGroup("Website", [
-                  makeLink("Visit site", activeProject.website),
-                ])}
-                {renderLinkGroup("Contact", [
-                  makeLink(
-                    activeProject.contact?.email,
-                    activeProject.contact?.email
-                      ? `mailto:${activeProject.contact.email}`
-                      : null
-                  ),
-                ])}
+                {renderCapabilityGrid(activeProject.capabilities)}
+                <div className="space-y-4">
+                  {renderLinkGroup("Contract", [
+                    makeLink("Etherscan", activeProject.contract?.etherscan),
+                    makeLink("Uniswap", activeProject.contract?.uniswap),
+                  ])}
+                  {renderLinkGroup("Documentation", [
+                    makeLink("Tokenomics", activeProject.docs?.tokenomics),
+                    makeLink("Whitepaper", activeProject.docs?.whitepaper),
+                  ])}
+                  {renderLinkGroup("Branding", [
+                    makeLink("Logo", activeProject.branding?.logo),
+                  ])}
+                  {renderLinkGroup("Socials", [
+                    makeLink("Instagram", activeProject.socials?.instagram),
+                    makeLink("Twitter / X", activeProject.socials?.twitter),
+                    makeLink("Medium", activeProject.socials?.medium),
+                    makeLink("LinkedIn", activeProject.socials?.linkedin),
+                  ])}
+                  {renderLinkGroup("Website", [
+                    makeLink("Visit site", activeProject.website),
+                  ])}
+                  {renderLinkGroup("Contact", [
+                    makeLink(
+                      activeProject.contact?.email,
+                      activeProject.contact?.email
+                        ? `mailto:${activeProject.contact.email}`
+                        : null
+                    ),
+                  ])}
+                </div>
               </div>
             ) : null}
           </div>
