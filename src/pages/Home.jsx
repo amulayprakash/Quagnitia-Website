@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Hero from "../components/landing/Hero";
 import Services from "../components/landing/Services";
 import About from "../components/landing/About";
@@ -12,6 +13,16 @@ import { useLayoutContext } from "./Layout";
 
 export default function Home() {
   const { isDark, theme } = useLayoutContext();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     document.title =

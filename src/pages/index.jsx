@@ -5,6 +5,8 @@ import Home from "./Home";
 import HeroComparison from "./HeroComparison";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsOfService from "./TermsOfService";
+import BlogPage from "./BlogPage";
+import BlogsList from "./BlogsList";
 
 import {
   BrowserRouter as Router,
@@ -46,6 +48,8 @@ function PagesContent() {
         <Route path="/HeroComparison" element={<HeroComparison />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/tos" element={<TermsOfService />} />
+        <Route path="/blog/:slug" element={<BlogPage />} />
+        <Route path="/blog" element={<BlogsList />} />
       </Routes>
     </Layout>
   );

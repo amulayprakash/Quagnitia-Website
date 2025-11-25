@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import logo from "./../assets/logo_small-up.png";
@@ -8,6 +9,8 @@ export default function Layout({ children }) {
   const [isDark, setIsDark] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -16,7 +19,11 @@ export default function Layout({ children }) {
   }, []);
 
   const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    if (location.pathname !== "/" && location.pathname !== "/Home") {
+      navigate("/", { state: { scrollTo: id } });
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
     setMobileMenuOpen(false);
   };
 
@@ -71,7 +78,12 @@ export default function Layout({ children }) {
               src={logo}
               alt=" Quagnitia Systems Pvt. Ltd."
               className="h-10 cursor-pointer"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={() => {
+                if (location.pathname !== "/" && location.pathname !== "/Home") {
+                  navigate("/");
+                }
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
             />
 
             {/* Desktop Navigation */}
@@ -110,6 +122,13 @@ export default function Layout({ children }) {
                 style={{ color: theme.muted }}
               >
                 FAQ
+              </button>
+              <button
+                onClick={() => navigate("/blog")}
+                className="hover:opacity-70 transition-opacity"
+                style={{ color: theme.muted }}
+              >
+                Blog
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
@@ -208,6 +227,16 @@ export default function Layout({ children }) {
                 style={{ color: theme.muted }}
               >
                 FAQ
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/blog");
+                  setMobileMenuOpen(false);
+                }}
+                className="text-left py-2"
+                style={{ color: theme.muted }}
+              >
+                Blog
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
