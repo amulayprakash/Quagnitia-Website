@@ -22,6 +22,13 @@ export const blogs = [
   image: "https://i.ibb.co/8L0zrvXc/blog-3-1.jpg",
   description: "A detailed breakdown of the three biggest threats to a token launch—smart-contract vulnerabilities, liquidity failures, and compliance pitfalls—plus real case studies and a pre-launch readiness checklist.",
   date: "November 26, 2025"
+},{
+  id: 4,
+  slug: "top-nft-trends-2025-digital-collectibles-utility-tokens",
+  title: "Top NFT Trends of 2025: What’s Next for Digital Collectibles & Utility Tokens",
+  image: "https://i.ibb.co/VppVzWX6/blog-4-2.jpg",
+  description: "Explore the leading NFT trends of 2025 — utility-driven NFTs, AI-generated art, GameFi expansion, real-world asset tokenization, hybrid NFTs, and DeFi integration — and what they mean for creators, investors and developers.",
+  date: "November 26, 2025",
 }
 
 ];
