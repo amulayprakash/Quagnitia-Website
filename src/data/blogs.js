@@ -10,9 +10,18 @@ export const blogs = [
   {
     id: 2,
     slug: "how-to-launch-a-cryptocurrency-token-in-2025",
-  title: "How to Launch a Cryptocurrency Token in 2025: Step-by-Step Guide",
-  image: "https://i.ibb.co/sdvrNQTL/Chat-GPT-Image-Nov-25-2025-05-33-21-PM.png",
-  description: "A precise 2025 playbook for launching a cryptocurrency token—covering purpose, blockchain choice, tokenomics, smart contract audits, compliance, infrastructure, and post-launch growth.",
-  date: "November 05, 2025"
-  }
+    title: "How to Launch a Cryptocurrency Token in 2025: Step-by-Step Guide",
+    image: "https://i.ibb.co/sdvrNQTL/Chat-GPT-Image-Nov-25-2025-05-33-21-PM.png",
+    description: "A precise 2025 playbook for launching a cryptocurrency token—covering purpose, blockchain choice, tokenomics, smart contract audits, compliance, infrastructure, and post-launch growth.",
+    date: "November 05, 2025"
+  },
+  {
+  id: 3,
+  slug: "smart-contract-liquidity-compliance-risks-token-launch",
+  title: "Smart-Contract, Liquidity, and Compliance Risks: What Can Derail Your Token Launch",
+  image: "https://i.ibb.co/8L0zrvXc/blog-3-1.jpg",
+  description: "A detailed breakdown of the three biggest threats to a token launch—smart-contract vulnerabilities, liquidity failures, and compliance pitfalls—plus real case studies and a pre-launch readiness checklist.",
+  date: "November 26, 2025"
+}
+
 ];
