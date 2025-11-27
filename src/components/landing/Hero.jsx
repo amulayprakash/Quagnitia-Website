@@ -70,7 +70,7 @@ export default function Hero({ isDark, theme }) {
             className="text-5xl md:text-7xl font-bold leading-tight"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            <span style={{ color: theme.text }}>From Idea to Coin —</span>
+            <span style={{ color: theme.text }}>24 Years of Excellence.</span>
             <br />
             <span
               style={{
@@ -81,7 +81,7 @@ export default function Hero({ isDark, theme }) {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Enterprise Blockchain
+              Leading the AI &
             </span>
 
             <br />
@@ -94,7 +94,7 @@ export default function Hero({ isDark, theme }) {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              & Mobile Apps
+              Web3 Revolution
             </span>
           </h1>
 
@@ -103,16 +103,11 @@ export default function Hero({ isDark, theme }) {
             className="text-lg md:text-xl max-w-4xl mx-auto leading-relaxed"
             style={{ color: theme.muted }}
           >
-            Full-stack blockchain engineering, secure token launches, DAO
-            governance and mobile app integration —{" "}
+            Bridging the gap between legacy stability and future innovation. We deliver enterprise-grade{" "}
             <span style={{ color: theme.accent, fontWeight: "600" }}>
-              Global team
+              AI and Blockchain solutions
             </span>
-            ,{" "}
-            <span style={{ color: theme.accent, fontWeight: "600" }}>
-              Global delivery
-            </span>
-            .
+            {" "}backed by two decades of software mastery.
           </p>
 
           {/* CTA buttons */}
@@ -133,7 +128,7 @@ export default function Hero({ isDark, theme }) {
               }}
             >
               <Calendar className="w-5 h-5 mr-2" strokeWidth={1.5} />
-              Schedule a Free Consultation
+              Schedule Strategy Call
               <ArrowRight
                 className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
                 strokeWidth={1.5}
@@ -142,7 +137,10 @@ export default function Hero({ isDark, theme }) {
             <Button
               size="lg"
               variant="outline"
-              onClick={() => setShowTokenForm(true)}
+              onClick={() => {
+                const element = document.getElementById('services');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }}
               style={{
                 backgroundColor: "transparent",
                 color: theme.text,
@@ -155,7 +153,7 @@ export default function Hero({ isDark, theme }) {
               }}
             >
               <FileText className="w-5 h-5 mr-2" strokeWidth={1.5} />
-              Request Token Quote
+              Explore Solutions
             </Button>
           </div>
 

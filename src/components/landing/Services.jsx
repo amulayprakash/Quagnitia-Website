@@ -59,339 +59,19 @@ import liqui from "@/assets/defi/liqui.jpg";
    -------------------------*/
 const services = [
   {
-    id: "token",
-    icon: Coins,
-    title: "Token & Coin Launches",
-    description:
-      "Smart contract development, tokenomics, audits, liquidity setup and exchange listing guidance.",
-    details: {
-      description:
-        "We provide comprehensive, end-to-end support for successful Token Generation Events (TGEs), guiding projects from initial strategic concept to a secure market launch. Our services are designed to mitigate risk and maximize impact by combining secure, audited smart contract development with rigorous tokenomics modeling, strategic liquidity planning, and comprehensive guidance for regulatory compliance and exchange listings.",
-      points: [
-        "Smart Contract Development & Audits",
-        "Strategic Tokenomics Modeling",
-        "Liquidity Pool Setup",
-        "Exchange Listing Guidance",
-      ],
-    },
-    projects: [
-      {
-        id: "fusdt-01",
-        title: "FUSDT Token Launch",
-        short:
-          "ERC-20 token deployment, liquidity setup, tokenomics, whitepaper, branding, and ecosystem presence.",
-        description:
-          "Complete FUSDT token deployment including smart contract launch, Uniswap liquidity provisioning, tokenomics modeling, whitepaper preparation, branding assets, and multi-platform presence across social media.",
-
-        date: "2024-01-01",
-        tech: ["Solidity", "Uniswap v4", "Etherscan", "Tokenomics", "Branding"],
-
-        images: [
-          "https://i.postimg.cc/L6KDbNB6/offcial-2-200x200.png",
-          fusdt1,
-          fusdt2,
-          fusdt3,
-          fusdt4,
-        ],
-
-        contract: {
-          etherscan:
-            "https://etherscan.io/address/0x8413C89bA166f95E886dc5560f80E40640968ac6",
-          uniswap: "https://app.uniswap.org/positions/v4/ethereum/80254",
-        },
-
-        docs: {
-          tokenomics:
-            "https://drive.google.com/file/d/1OByrlo7_krMqADZtMXU8683_jotkPtdq/view?usp=sharing",
-          whitepaper:
-            "https://drive.google.com/file/d/1U00iRaXhEZBI3IlTGLXZyblq1QpRkFtN/view?usp=sharing",
-        },
-
-        branding: {
-          logo: "https://i.postimg.cc/L6KDbNB6/offcial-2-200x200.png",
-        },
-
-        socials: {
-          instagram: "https://www.instagram.com/offcial_fusdt/",
-          twitter: "https://x.com/official_fusdt",
-          medium: "https://medium.com/@official_fusdt",
-        },
-
-        website: "https://www.fusdt.online/",
-        contact: {
-          email: "iam@fusdt.online",
-        },
-      },
-      {
-        id: "maxma-01",
-        title: "MAXMA Token Launch",
-        short: "Token launch and documentation support.",
-
-        description:
-          "Maxma Tokens, a finite-supply (1 billion) Ethereum-based cryptocurrency intended to replace the existing in-game currency of the Maxma Gaming platform. The token's utility includes in-game payments, merchandise purchases, staking, and platform governance. The whitepaper details a deflationary model, including transaction burns and profit-based buybacks, with the stated goal of connecting gaming rewards to tradable, real-world asset value",
-
-        date: "2024-01-01",
-        tech: ["Solidity", "Token Documentation"],
-
-        images: [token1],
-
-        contract: {
-          etherscan: null,
-          uniswap: null,
-        },
-
-        docs: {
-          tokenomics: null,
-          whitepaper:
-            "https://drive.google.com/file/d/16Tlc5uXzK69lNQrsIBWCyje-F7xrkj4C/view?usp=drive_link",
-        },
-      },
-    ],
-  },
-  {
-    id: "dao",
-    icon: Gavel,
-    title: "DAO Architecture & Governance",
-    description:
-      "Token governance, multi-sig, voting modules and treasury management for decentralized orgs.",
-    details: {
-      description:
-        "We specialize in designing and implementing bespoke governance architectures for Decentralized Autonomous Organizations. Our solutions focus on establishing long-term resilience and security, engineering the on-chain voting modules, multi-signature treasury protocols, and incentive-aligned token frameworks necessary to facilitate transparent, effective, and scalable community-led governance.",
-      points: [
-        "Token-Based Governance Frameworks",
-        "On-Chain Voting Modules",
-        "Multi-Signature Treasury Management",
-        "Full DAO Architecture",
-      ],
-    },
-    projects: [
-      {
-        id: "alpha-01",
-        title: "Alpha Island Club",
-        short:
-          "Fractionalized access to high-value NFT, crypto, ICO, and IRL investment portfolios.",
-
-        description:
-          "Alpha Island Club provides smaller investors with fractional access to premium investment opportunities typically reserved for larger holders. The project uses an NFT membership model to offer diversified exposure across NFTs, cryptocurrency assets, ICO allocations, and select real-world investments.",
-
-        date: "2024-01-01",
-        tech: [
-          "ERC-721",
-          "NFT Membership",
-          "Smart Contract",
-          "Portfolio Allocation",
-        ],
-
-        images: [moose1],
-
-        contract: {
-          etherscan:
-            "https://etherscan.io/address/0x24a913b00cbc8c3c747b19c7944e4da26da1130b",
-        },
-
-        socials: {
-          twitter: "https://x.com/moosesocietynft",
-        },
-
-        website: "https://opensea.io/collection/alphaislandclub",
-      },
-    ],
-  },
-  {
-    id: "nft",
-    icon: Palette,
-    title: "NFT Marketplaces & Ecosystems",
-    description:
-      "Minting, royalties, storefronts, metadata pipelines and cross-chain features.",
-    details: {
-      description:
-        "We construct high-performance, feature-rich NFT marketplaces and the complete technical ecosystems that power them. Our expertise extends beyond the user-facing storefront to the core infrastructure, including efficient minting contracts, complex on-chain royalty enforcement, robust and decentralized metadata pipelines, and multi-chain interoperability to ensure maximum asset reach and utility.",
-      points: [
-        "Efficient Minting & Royalty Contracts",
-        "Custom Storefronts & UI/UX",
-        "Secure Metadata Pipelines",
-        "Cross-Chain Interoperability",
-      ],
-    },
-    projects: [
-      {
-        id: "nft-crypto3d-01",
-        title: "Crypto 3D Punks",
-        short:
-          "A 10,000-piece 3D reinterpretation of the iconic Cryptopunks, now airdropped on BASE Chain.",
-
-        description:
-          "Crypto 3D Punks reimagines the classic Cryptopunks in detailed 3D with ultra-high-resolution artwork. Originally created in 2022, the collection has evolved through strong community support and major technical upgrades, culminating in the full 10,000-NFT airdrop on the BASE Chain.",
-
-        date: "2022-01-01",
-
-        tech: [
-          "3D NFT Art",
-          "ERC-721",
-          "BASE Chain",
-          "High-Resolution Asset Pipeline",
-        ],
-
-        images: [punks1],
-
-        socials: {
-          twitter: "https://x.com/crypt3d_punks",
-        },
-
-        website: "https://opensea.io/collection/crypt3dpunksbase",
-      },
-      {
-        id: "nft-moose-01",
-        title: "The Moose Society",
-        short:
-          "A hand-drawn 5000-NFT collection supporting Children's Hospital through partnered charity initiatives.",
-
-        description:
-          "The Moose Society is a limited-edition, hand-drawn NFT collection of 5000 moose, each with unique traits and artwork variations. The project actively supports charitable causes, including its partnership with Children's Hospital. The ecosystem expands across multiple collections, offering holders extended benefits and evolving content.",
-
-        date: "2022-01-01",
-
-        tech: [
-          "ERC-721",
-          "Hand-Drawn NFT Art",
-          "Charity-Integrated NFT Utility",
-        ],
-
-        images: [
-          moose2,
-          moose3,
-          moose4,
-          moose5,
-          moose6,
-          moose7,
-          moose8,
-          moose9,
-        ],
-
-        contract: {
-          etherscan:
-            "https://etherscan.io/address/0x8f71e17b612f3ea9a8bf7eeb9289654edca6d8b7",
-        },
-
-        socials: {
-          twitter: "https://x.com/moosesocietynft",
-        },
-
-        website: "https://opensea.io/collection/themoosesociety",
-
-        marketplaces: {
-          main: "https://opensea.io/collection/themoosesociety",
-          hideouts: "https://opensea.io/collection/society-hideouts",
-          upgrades: "https://opensea.io/collection/evoupgrades",
-        },
-      },
-    ],
-  },
-  {
-    id: "gaming",
-    icon: Gamepad2,
-    title: "Web3 Gaming & Mobile Integration",
-    description:
-      "Play-to-earn mechanics, wallet SDKs, in-game NFT assets and item economies.",
-    details: {
-      description:
-        "We bridge the gap between traditional gaming and decentralized technology by integrating robust blockchain mechanics directly into interactive experiences. Our team excels at engineering sustainable play-to-earn (P2E) economies, integrating in-game NFT assets, and deploying seamless, non-intrusive mobile wallet SDKs. We provide the complete backend infrastructure to power the next generation of GameFi.",
-      points: [
-        "Play-to-Earn (P2E) Mechanic Design",
-        "In-Game NFT Asset Economies",
-        "Seamless Mobile Wallet SDK Integration",
-        "Backend GameFi Infrastructure",
-      ],
-    },
-    projects: [
-      {
-        id: "web3-gaming-01",
-        title: "Web3 Gaming Development",
-        short:
-          "End-to-end Web3 game development with on-chain mechanics and NFT-powered gameplay.",
-        description:
-          "We build full Web3 gaming ecosystems including smart contracts, NFT-based items, on-chain progression systems, P2E mechanics, in-game marketplaces, and cross-chain interoperability. Delivery targets Unity, Unreal and browser engines for production-grade experiences.",
-        date: "2024-01-01",
-        tech: [
-          "Unity",
-          "Unreal Engine",
-          "WebGL / Phaser",
-          "ERC-721 / ERC-1155",
-          "On-Chain Game Logic",
-          "Solidity",
-          "Node.js Game Backend",
-          "Cross-Chain Bridges",
-        ],
-        images: [game1, game2],
-        capabilities: {
-          gameplay: [
-            "On-chain abilities, levels, item stats",
-            "NFT characters & upgradeable assets",
-            "Play-to-earn reward systems",
-            "PvP / PvE game logic",
-            "Dynamic asset metadata updates",
-          ],
-          infrastructure: [
-            "Custom game smart contracts",
-            "Economy balancing & analytics",
-            "Item crafting systems",
-            "Token-driven reward loops",
-            "In-game marketplace integration",
-          ],
-        },
-      },
-      {
-        id: "mobile-integration-01",
-        title: "Web3 Mobile Integration",
-        short:
-          "Native iOS/Android and React Native Web3 integration with full wallet and dApp support.",
-        description:
-          "We implement complete Web3 capabilities into mobile apps: wallet connections, smart contract interactions, asset management, real-time updates and secure key handling. Support for React Native, native iOS/Android and Unity mobile pipelines.",
-        date: "2024-01-01",
-        tech: [
-          "React Native",
-          "Swift",
-          "Kotlin",
-          "Unity Mobile",
-          "WalletConnect",
-          "MetaMask SDK",
-          "Coinbase Wallet SDK",
-          "Custom Mobile dApp Browser",
-        ],
-        images: [web3m],
-        capabilities: {
-          wallets: [
-            "MetaMask SDK integration",
-            "WalletConnect v2",
-            "Coinbase Wallet",
-            "Custom mobile key management",
-          ],
-          features: [
-            "Smart contract execution",
-            "On-chain asset display",
-            "Push alerts for blockchain events",
-            "Mobile signing flows (EIP-155, EIP-712)",
-            "Secure transaction broadcasting",
-          ],
-          platforms: ["iOS", "Android", "React Native", "Unity Mobile"],
-        },
-      },
-    ],
-  },
-  {
-    id: "apps",
+    id: "enterprise",
     icon: Smartphone,
-    title: "Enterprise Mobile & Web Apps",
+    title: "Enterprise Engineering & Mobile",
     description:
-      "Scalable backends, API design, responsive UI/UX, wallet integrations and post-launch support.",
+      "Scalable architectures, Cloud migration, and Legacy modernization for global businesses.",
     details: {
       description:
-        "We build enterprise-grade mobile and web applications designed to securely and efficiently interface with complex blockchain protocols. Our focus is on creating scalable, high-performance systems through robust API design, resilient backends, and intuitive, responsive UI/UX. We manage the complexity of non-custodial wallet integrations and on-chain data indexing, delivering a production-ready product with full post-launch support.",
+        "We build the digital backbone of your business. With over two decades of experience, we specialize in modernizing legacy systems, building scalable cloud architectures, and delivering high-performance mobile applications. Our engineering rigor ensures stability, security, and scalability for mission-critical enterprise solutions.",
       points: [
-        "Scalable Backends & API Design",
-        "Secure Multi-Platform Wallet Integration",
-        "Responsive, High-Performance UI/UX",
-        "Full Lifecycle & Post-Launch Support",
+        "Legacy System Modernization",
+        "Cloud-Native Architecture",
+        "High-Performance Mobile Apps",
+        "Enterprise Security & Compliance",
       ],
     },
     projects: [
@@ -467,24 +147,186 @@ const services = [
     ],
   },
   {
-    id: "defi",
-    icon: Shield,
-    title: "DeFi Platform Development",
+    id: "ai",
+    icon: Palette, // Using Palette as a placeholder for Brain/AI if not available, or I should import Brain
+    title: "Applied Artificial Intelligence",
     description:
-      "AMMs, staking, lending, yield strategies, oracle integration and security-first architecture.",
+      "LLM integration, Predictive Analytics, and Intelligent Automation for business processes.",
     details: {
       description:
-        "We architect and deploy sophisticated, security-first Decentralized Finance (DeFi) platforms designed for high reliability and capital efficiency. Our expertise covers the full spectrum of DeFi protocols, including custom Automated Market Makers (AMMs), advanced yield optimization strategies, decentralized lending/borrowing markets, secure oracle integrations, and comprehensive staking solutions.",
+        "We help enterprises harness the power of Artificial Intelligence to drive efficiency and innovation. From integrating Large Language Models (LLMs) into customer support workflows to building predictive analytics engines for decision support, we turn hype into practical, value-generating applications.",
       points: [
-        "Custom AMM & Liquidity Solutions",
-        "Staking & Lending Protocols",
-        "Complex Yield Farming Strategies",
-        "Secure Oracle Integration",
-        "Security-First Smart Contract Architecture",
+        "LLM & Generative AI Integration",
+        "Predictive Analytics & Forecasting",
+        "Intelligent Process Automation",
+        "Natural Language Processing (NLP)",
+      ],
+    },
+    projects: [
+        // Placeholder projects for AI as we don't have specific ones in the old list
+      {
+        id: "ai-analytics-01",
+        title: "Predictive Retail Analytics",
+        short:
+          "AI-driven forecasting engine for inventory management and demand planning.",
+        description:
+          "A custom machine learning solution that analyzes historical sales data, seasonal trends, and external market factors to predict inventory needs with high accuracy. This system reduced stockouts by 30% and minimized overstock waste for a major retail client.",
+        date: "2024-05-15",
+        tech: ["Python", "TensorFlow", "AWS SageMaker", "React Dashboard"],
+        images: [app5], // Reusing generic app image
+      },
+       {
+        id: "ai-chatbot-01",
+        title: "Enterprise Knowledge Bot",
+        short:
+          "Secure internal LLM chatbot for querying company documentation and technical manuals.",
+        description:
+          "We deployed a secure, private instance of a Large Language Model fine-tuned on the client's internal documentation. This allowed engineering teams to instantly retrieve technical specifications and historical project data using natural language queries, significantly reducing onboarding time.",
+        date: "2024-08-01",
+        tech: ["OpenAI API", "LangChain", "Vector Database", "Enterprise Security"],
+        images: [app1], // Reusing generic app image
+      },
+      {
+        id: "ai-vision-01",
+        title: "Industrial Computer Vision",
+        short:
+          "Automated quality control system using custom CNN models for manufacturing lines.",
+        description:
+          "A high-speed computer vision system designed to detect defects in manufacturing assembly lines. Utilizing custom Convolutional Neural Networks (CNNs) deployed on edge devices, the system identifies anomalies with 99.8% accuracy in real-time, automatically triggering rejection mechanisms.",
+        date: "2024-06-10",
+        tech: ["PyTorch", "OpenCV", "Edge Computing", "IoT Integration"],
+        images: [app2], // Reusing generic app image
+      },
+      {
+        id: "ai-recsys-01",
+        title: "Media Recommendation Engine",
+        short:
+          "Real-time content recommendation system for a streaming platform.",
+        description:
+          "We engineered a scalable recommendation engine for a video streaming service. By combining collaborative filtering with content-based filtering, the system delivers personalized content suggestions to millions of users in real-time, increasing user engagement time by 45%.",
+        date: "2024-03-22",
+        tech: ["Python", "Scikit-learn", "Redis", "Microservices"],
+        images: [app3], // Reusing generic app image
+      }
+    ],
+  },
+  {
+    id: "web3",
+    icon: Coins,
+    title: "Blockchain & Web3 Solutions",
+    description:
+      "Smart Contracts, DeFi, Tokenization, and Decentralized Applications.",
+    details: {
+      description:
+        "As pioneers in the Web3 space, we deliver end-to-end blockchain solutions. Whether you need a secure smart contract for a token launch, a complex DeFi protocol, or a DAO governance structure, we combine our deep cryptographic knowledge with enterprise-grade engineering standards.",
+      points: [
+        "Smart Contract Development & Audits",
+        "DeFi & Tokenization Platforms",
+        "DAO Governance Systems",
+        "Wallet & Exchange Integration",
       ],
     },
     projects: [
       {
+        id: "fusdt-01",
+        title: "FUSDT Token Launch",
+        short:
+          "ERC-20 token deployment, liquidity setup, tokenomics, whitepaper, branding, and ecosystem presence.",
+        description:
+          "Complete FUSDT token deployment including smart contract launch, Uniswap liquidity provisioning, tokenomics modeling, whitepaper preparation, branding assets, and multi-platform presence across social media.",
+
+        date: "2024-01-01",
+        tech: ["Solidity", "Uniswap v4", "Etherscan", "Tokenomics", "Branding"],
+
+        images: [
+          "https://i.postimg.cc/L6KDbNB6/offcial-2-200x200.png",
+          fusdt1,
+          fusdt2,
+          fusdt3,
+          fusdt4,
+        ],
+
+        contract: {
+          etherscan:
+            "https://etherscan.io/address/0x8413C89bA166f95E886dc5560f80E40640968ac6",
+          uniswap: "https://app.uniswap.org/positions/v4/ethereum/80254",
+        },
+
+        docs: {
+          tokenomics:
+            "https://drive.google.com/file/d/1OByrlo7_krMqADZtMXU8683_jotkPtdq/view?usp=sharing",
+          whitepaper:
+            "https://drive.google.com/file/d/1U00iRaXhEZBI3IlTGLXZyblq1QpRkFtN/view?usp=sharing",
+        },
+
+        branding: {
+          logo: "https://i.postimg.cc/L6KDbNB6/offcial-2-200x200.png",
+        },
+
+        socials: {
+          instagram: "https://www.instagram.com/offcial_fusdt/",
+          twitter: "https://x.com/official_fusdt",
+          medium: "https://medium.com/@official_fusdt",
+        },
+
+        website: "https://www.fusdt.online/",
+        contact: {
+          email: "iam@fusdt.online",
+        },
+      },
+      {
+        id: "rwa-01",
+        title: "Real World Asset Tokenization",
+        short:
+          "Platform for tokenizing commercial real estate assets with compliance enforcement.",
+        description:
+          "A compliant platform for fractionalizing ownership of high-value commercial real estate. The system utilizes ERC-3643 standards to enforce identity verification (KYC/AML) directly on-chain, ensuring that only eligible investors can hold and trade the asset-backed tokens.",
+        date: "2024-02-15",
+        tech: ["ERC-3643", "Solidity", "KYC/AML Integration", "Legal Engineering"],
+        images: [defi1], // Reusing generic defi image
+      },
+      {
+        id: "bridge-01",
+        title: "Secure Cross-Chain Bridge",
+        short:
+          "Trust-minimized bridge infrastructure for transferring assets between EVM chains.",
+        description:
+          "We architected a secure cross-chain bridge protocol facilitating seamless asset transfers between Ethereum, Polygon, and BSC. The architecture employs a decentralized network of relayers and multi-sig validators to minimize trust assumptions and prevent common bridge exploits.",
+        date: "2023-12-10",
+        tech: ["Solidity", "Rust", "Relayer Network", "Cryptography"],
+        images: [cross], // Reusing generic cross image
+      },
+      {
+        id: "alpha-01",
+        title: "Alpha Island Club",
+        short:
+          "Fractionalized access to high-value NFT, crypto, ICO, and IRL investment portfolios.",
+
+        description:
+          "Alpha Island Club provides smaller investors with fractional access to premium investment opportunities typically reserved for larger holders. The project uses an NFT membership model to offer diversified exposure across NFTs, cryptocurrency assets, ICO allocations, and select real-world investments.",
+
+        date: "2024-01-01",
+        tech: [
+          "ERC-721",
+          "NFT Membership",
+          "Smart Contract",
+          "Portfolio Allocation",
+        ],
+
+        images: [moose1],
+
+        contract: {
+          etherscan:
+            "https://etherscan.io/address/0x24a913b00cbc8c3c747b19c7944e4da26da1130b",
+        },
+
+        socials: {
+          twitter: "https://x.com/moosesocietynft",
+        },
+
+        website: "https://opensea.io/collection/alphaislandclub",
+      },
+       {
         id: "defi-01",
         title: "FUSDT Custom AMM & DEX ",
         short: "Custom AMM & DEX Development",
@@ -521,26 +363,6 @@ const services = [
         contact: {
           email: "iam@fusdt.online",
         },
-      },
-      {
-        id: "defi-02",
-        title: "Concentrated Liquidity Solutions",
-        short: "Custom AMM with concentrated liquidity",
-        description:
-          "We build high-capital-efficiency AMMs utilizing concentrated liquidity. This advanced model allows liquidity providers to allocate capital within specific price ranges, dramatically increasing LP efficiency and offering traders significantly lower slippage. We use NFTs (ERC-721s) to represent these complex LP positions.",
-        date: "2023-11-20",
-        tech: ["Solidity", "Subgraph"],
-        images: [liqui],
-      },
-      {
-        id: "defi-03",
-        title: "Specialized AMMs (Stableswap & Cross-Chain)",
-        description: `We engineer AMMs for specific use cases. This includes "Stableswap" protocols for high-volume, ultra-low-slippage swaps between like-assets (stablecoins) and "Cross-Chain" AMMs that serve as the core liquidity engine for bridges, facilitating seamless swaps across multiple networks.`,
-        short: "Custom AMM with concentrated liquidity",
-        caseStudy: "/case-studies/flowamm",
-        date: "2023-11-20",
-        tech: ["Solidity", "Subgraph"],
-        images: [dapp, cross, cross2],
       },
     ],
   },

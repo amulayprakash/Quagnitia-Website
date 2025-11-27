@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Hero from "../components/landing/Hero";
 import Services from "../components/landing/Services";
 import About from "../components/landing/About";
+import WhyUs from "../components/landing/WhyUs";
 import Process from "../components/landing/Process";
 import Testimonials from "../components/landing/Testimonials";
 import FAQ from "../components/landing/FAQ";
@@ -194,6 +195,7 @@ export default function Home() {
       <Hero isDark={isDark} theme={theme} />
       <Services isDark={isDark} theme={theme} />
       <About isDark={isDark} theme={theme} />
+      <WhyUs isDark={isDark} theme={theme} />
       <Process isDark={isDark} theme={theme} />
       <Testimonials isDark={isDark} theme={theme} />
       <FAQ isDark={isDark} theme={theme} />

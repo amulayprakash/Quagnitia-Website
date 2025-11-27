@@ -51,27 +51,14 @@ export default function About({ isDark, theme }) {
               style={{ color: theme.muted }}
             >
               <p>
-                Our name embodies our mission:{" "}
-                <span className="font-semibold" style={{ color: theme.accent }}>
-                  Qualis
-                </span>{" "}
-                (quality) +{" "}
-                <span className="font-semibold" style={{ color: theme.accent }}>
-                  Agnito
-                </span>{" "}
-                (knowledge) = Quagnitia. With 24+ years delivering enterprise
-                software, we've evolved into a specialized blockchain and mobile
-                development powerhouse.
+                We started in 2000, building the foundation of the mobile web. Today, we converge that engineering discipline with the power of <span className="font-semibold" style={{ color: theme.accent }}>Decentralization</span> and <span className="font-semibold" style={{ color: theme.accent }}>Intelligence</span>.
               </p>
 
               <p>
-                Our pivot to Web3 combines deep technical expertise with
-                battle-tested engineering practices. We serve{" "}
                 <span className="font-semibold" style={{ color: theme.accent }}>
-                  global clients
+                  Quagnitia
                 </span>{" "}
-                across DeFi, NFTs, gaming and enterprise applications—building
-                secure, scalable systems that drive real-world adoption.
+                (Qualis + Agnito) represents the fusion of Quality and Knowledge—now evolved to encompass Machine Learning and AI.
               </p>
 
               <p>
@@ -89,7 +76,7 @@ export default function About({ isDark, theme }) {
 
             {/* Values */}
             <div className="flex flex-wrap gap-3 pt-4 justify-center lg:justify-start">
-              {["Quality", "Knowledge", "Agility", "Innovation"].map(
+              {["Quality", "Knowledge", "Innovation", "Integrity"].map(
                 (value, i) => (
                   <div
                     key={i}
@@ -152,91 +139,6 @@ export default function About({ isDark, theme }) {
               >
                 Customer · Company · Co-worker · Community
               </p>
-            </div>
-
-            {/* Stats cards */}
-            <div className="grid grid-cols-2 gap-4">
-              <div
-                className="p-6 rounded-xl backdrop-blur-sm text-center lg:text-left"
-                style={{
-                  backgroundColor: theme.card,
-                  border: `1px solid ${theme.border}`,
-                }}
-              >
-                <Award
-                  className="w-8 h-8 mb-3 mx-auto lg:mx-0"
-                  strokeWidth={1.5}
-                  style={{ color: theme.accent }}
-                />
-                <div
-                  className="text-2xl font-bold mb-1"
-                  style={{ color: theme.text }}
-                >
-                  24+
-                </div>
-                <div className="text-sm" style={{ color: theme.muted }}>
-                  Years in Software
-                </div>
-              </div>
-
-              <div
-                className="p-6 rounded-xl backdrop-blur-sm text-center lg:text-left"
-                style={{
-                  backgroundColor: theme.card,
-                  border: `1px solid ${theme.border}`,
-                }}
-              >
-                <Target
-                  className="w-8 h-8 mb-3 mx-auto lg:mx-0"
-                  strokeWidth={1.5}
-                  style={{ color: theme.accent }}
-                />
-                <div
-                  className="text-2xl font-bold mb-1"
-                  style={{ color: theme.text }}
-                >
-                  100%
-                </div>
-                <div className="text-sm" style={{ color: theme.muted }}>
-                  Client Satisfaction
-                </div>
-              </div>
-
-              <div
-                className="p-6 rounded-xl backdrop-blur-sm col-span-2 text-center lg:text-left"
-                style={{
-                  backgroundColor: theme.card,
-                  border: `1px solid ${theme.border}`,
-                }}
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div
-                      className="text-2xl font-bold mb-1"
-                      style={{ color: theme.accent }}
-                    >
-                      Global
-                    </div>
-                    <div className="text-sm" style={{ color: theme.muted }}>
-                      Worldwide Delivery
-                    </div>
-                  </div>
-
-                  <div
-                    className="w-16 h-16 rounded-full flex items-center justify-center"
-                    style={{
-                      background: `linear-gradient(135deg, ${theme.accent}30, ${theme.accent}15)`,
-                    }}
-                  >
-                    <div
-                      className="w-12 h-12 rounded-full"
-                      style={{
-                        background: `linear-gradient(135deg, ${theme.accent}, ${theme.text})`,
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

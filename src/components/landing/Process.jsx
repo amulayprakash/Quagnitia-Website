@@ -10,43 +10,43 @@ import {
 const steps = [
   {
     icon: Search,
-    title: "Discovery & Tokenomics Design",
+    title: "Discovery & Strategy",
     description:
-      "Requirements analysis, market research, token economics modeling, and project architecture planning.",
+      "Requirements analysis, market research, feasibility study, and architectural planning.",
     deliverable:
-      "Technical specification document, tokenomics whitepaper, project roadmap",
+      "Technical specification document, project roadmap, strategic plan",
   },
   {
     icon: FileCode,
-    title: "Architecture & Smart Contract Dev",
+    title: "Algorithm Design & Architecture",
     description:
-      "Smart contract development with comprehensive unit tests, internal security audit, and gas optimization.",
+      "System design, smart contract/algorithm development, and security-first engineering.",
     deliverable:
-      "Audited smart contracts, unit test coverage >95%, deployment scripts",
+      "System architecture, audited code, algorithm specifications",
   },
   {
     icon: Smartphone,
-    title: "Frontend & Mobile Integration",
+    title: "Integration & Development",
     description:
-      "User interface development, wallet integration (MetaMask, WalletConnect), SDK implementation, and Web3 connectivity.",
+      "Full-stack development, API integration, and seamless user interface implementation.",
     deliverable:
-      "Responsive dApp, mobile app with wallet support, API documentation",
+      "Responsive application, mobile app, API documentation",
   },
   {
     icon: ShieldCheck,
-    title: "Third-Party Security Audit & QA",
+    title: "Security Audit & QA",
     description:
-      "External security audit coordination, penetration testing, smart contract verification, and comprehensive QA testing.",
+      "Rigorous testing, security audits, penetration testing, and performance optimization.",
     deliverable:
-      "Third-party audit report, verified contracts, QA test results",
+      "Audit reports, QA test results, performance metrics",
   },
   {
     icon: Rocket,
-    title: "Launch, Liquidity Ops & Support",
+    title: "Deployment & Support",
     description:
-      "Mainnet deployment, liquidity setup, CEX/DEX listing coordination, monitoring infrastructure, and 24/7 post-launch support.",
+      "Production deployment, monitoring, and ongoing maintenance and optimization.",
     deliverable:
-      "Live deployment, liquidity pools, monitoring dashboard, support SLA",
+      "Live deployment, monitoring dashboard, support SLA",
   },
 ];
 
