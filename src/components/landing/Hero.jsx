@@ -16,7 +16,7 @@ export default function Hero({ isDark, theme }) {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pb-24">
       {/* Background with subtle pattern */}
       <div className="absolute inset-0" style={{ backgroundColor: theme.bg }}>
         <div className="absolute inset-0 opacity-20">
@@ -70,7 +70,7 @@ export default function Hero({ isDark, theme }) {
             className="text-5xl md:text-7xl font-bold leading-tight"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            <span style={{ color: theme.text }}>24 Years of Excellence.</span>
+            <span style={{ color: theme.text }}>Two Decades of Excellence.</span>
             <br />
             <span
               style={{

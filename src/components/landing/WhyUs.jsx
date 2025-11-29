@@ -16,7 +16,7 @@ export default function WhyUs({ isDark, theme }) {
             className="text-lg max-w-2xl mx-auto"
             style={{ color: theme.muted }}
           >
-            Why 24 Years of Experience Matters in AI & Web3
+            Why Two Decades of Experience Matters in AI & Web3
           </p>
         </div>
 
@@ -68,7 +68,7 @@ export default function WhyUs({ isDark, theme }) {
                 </div>
                 <div>
                     <h4 className="font-bold text-lg" style={{ color: theme.text }}>Long-term Partnership</h4>
-                    <p style={{ color: theme.muted }}>We've been here for 24 years. We are your partners for the long haul.</p>
+                    <p style={{ color: theme.muted }}>We've been here for Two decades. We are your partners for the long haul.</p>
                 </div>
               </div>
             </div>

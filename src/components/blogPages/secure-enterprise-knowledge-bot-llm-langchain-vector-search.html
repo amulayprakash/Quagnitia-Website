@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quagnitia | Building a Secure Enterprise Knowledge Bot</title>
+    <meta name="description" content="How to build a secure Enterprise Knowledge Bot with private LLMs, LangChain, vector search, and enterprise-grade security controls.">
+    <style>
+        /* SCOPING: All styles are prefixed with .q-scope */
+        .q-scope {
+            /* Theme Variables - Standardized Orange Theme */
+            --q-bg: #EFF4FA;
+            --q-text: #1A2635;
+            --q-muted: #56677C;
+            --q-accent: #FF7F33; /* Quagnitia Orange */
+            
+            /* Differentiated backgrounds for better contrast */
+            --q-card-bg: #ffffff; 
+            --q-highlight-bg: rgba(30, 90, 170, 0.06);
+            --q-card-border: rgba(26, 38, 53, 0.18);
+            
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--q-bg);
+            color: var(--q-text);
+            line-height: 1.6;
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        /* Reset inside scope */
+        .q-scope *, .q-scope *::before, .q-scope *::after {
+            box-sizing: inherit;
+        }
+
+        /* Typography */
+        .q-scope h1, .q-scope h2, .q-scope h3 {
+            color: var(--q-text);
+            margin-top: 0;
+        }
+
+        .q-scope h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .q-scope h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--q-card-border);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .q-scope h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--q-text);
+        }
+
+        .q-scope p {
+            margin-bottom: 1.2rem;
+            color: var(--q-muted);
+        }
+
+        .q-scope strong {
+            color: var(--q-text);
+            font-weight: 700;
+        }
+
+        /* Components */
+        .q-hero {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .q-lead {
+            font-size: 1.2rem;
+            color: var(--q-text);
+            max-width: 700px;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Buttons */
+        .q-btn-group {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .q-btn {
+            display: inline-block;
+            background-color: var(--q-accent);
+            color: #fff !important;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            margin: 5px;
+        }
+        
+        .q-btn:hover { opacity: 0.9; }
+
+        .q-btn.secondary {
+            background-color: transparent;
+            border: 2px solid var(--q-accent);
+            color: var(--q-accent) !important;
+        }
+
+        /* Metrics Bar */
+        .q-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 20px;
+            background: var(--q-highlight-bg);
+            border-radius: 8px;
+            border: 1px solid var(--q-card-border);
+        }
+
+        .q-metric-item { text-align: center; }
+
+        .q-metric-val {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--q-accent);
+        }
+
+        .q-metric-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--q-muted);
+        }
+
+        /* Grid Layouts */
+        .q-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .q-card {
+            background: #fff;
+            border: 1px solid var(--q-card-border);
+            padding: 28px;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .q-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--q-accent);
+        }
+
+        /* Image Placeholder Styling */
+        .q-img-box {
+            width: 100%;
+            background-color: #E0E6ED;
+            border: 2px dashed var(--q-card-border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--q-muted);
+            font-weight: 600;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .q-img-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Code Block Styling */
+        .q-code-block {
+            background: #1F2937; 
+            color: #E5E7EB; 
+            padding: 24px; 
+            border-radius: 8px; 
+            overflow-x: auto; 
+            font-size: 0.9rem; 
+            line-height: 1.5;
+            font-family: "Menlo", "Monaco", "Consolas", monospace;
+            margin: 24px 0;
+            border: 1px solid var(--q-card-border);
+        }
+
+        /* Lists */
+        .q-process-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: q-counter;
+        }
+
+        .q-process-list li {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 30px;
+        }
+
+        .q-process-list li::before {
+            counter-increment: q-counter;
+            content: counter(q-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background-color: var(--q-accent);
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        .q-meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .q-tag {
+            background-color: var(--q-highlight-bg);
+            color: var(--q-accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Table */
+        .q-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 1rem; }
+        .q-table th { text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--q-card-border); color: var(--q-text); font-weight: 600; }
+        .q-table td { padding: 16px; border-bottom: 1px solid var(--q-card-border); color: var(--q-muted); }
+        .q-table tr:last-child td { border-bottom: none; }
+
+        /* Footer/Contact specific */
+        .q-footer {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--q-card-border);
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 600px) {
+            .q-scope { padding: 20px; }
+            .q-hero h1 { font-size: 2rem; }
+            .q-metrics { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="q-scope">
+        
+        <section class="q-hero">
+            <h1>Building a Secure Enterprise Knowledge Bot with LLMs &amp; Vector Search</h1>
+            <p class="q-lead">
+                Private, domain-trained LLM + vector search = instant, secure answers for engineering teams. A guide to architecture, deployment, and security.
+            </p>
+
+            <div class="q-meta-tags">
+                <span class="q-tag">Enterprise LLM</span>
+                <span class="q-tag">LangChain</span>
+                <span class="q-tag">Vector Search</span>
+            </div>
+
+            <div class="q-img-box">
+                <img src="https://i.ibb.co/tpv3G6cc/blog-5-1.jpg" alt="Engineers using a secure knowledge chatbot">
+            </div>
+
+            <div class="q-btn-group">
+                <a href="#architecture" class="q-btn">View Architecture</a>
+                <a href="#deployment" class="q-btn secondary">Deployment Checklist</a>
+            </div>
+        </section>
+
+        <section class="q-metrics">
+            <div class="q-metric-item">
+                <span class="q-metric-val">3x</span>
+                <span class="q-metric-label">Faster discovery</span>
+            </div>
+            <div class="q-metric-item">
+                <span class="q-metric-val">50%</span>
+                <span class="q-metric-label">Reduced Onboarding</span>
+            </div>
+            <div class="q-metric-item">
+                <span class="q-metric-val">100%</span>
+                <span class="q-metric-label">Private Deployment</span>
+            </div>
+        </section>
+
+        <section>
+            <p>
+                Enterprises produce huge volumes of technical documentation — manuals, architecture notes, runbooks, and tickets — but retrieval is slow and error-prone.
+                We deployed a <strong>Secure Enterprise Knowledge Bot</strong>: a private LLM fine-tuned on internal documents with a LangChain RAG pipeline and vector search, enabling secure natural-language query of internal knowledge.
+            </p>
+            <p>
+                The outcome was immediate: instant technical answers, reduced onboarding time, and auditable, private access to internal knowledge.
+            </p>
+        </section>
+
+        <section>
+            <h2>Why an Enterprise Knowledge Bot?</h2>
+
+            <h3>The Problem</h3>
+            <ul>
+                <li>Engineers spend hours hunting for specs, design decisions, and tickets.</li>
+                <li>Traditional keyword search lacks semantics and context; results are brittle.</li>
+                <li>Public AI tools (ChatGPT) are often disallowed for confidential corporate data.</li>
+            </ul>
+
+            <h3>The Solution</h3>
+            <p>
+                A private LLM (or enterprise OpenAI endpoint) fine-tuned and augmented with vector retrieval returns contextual, source-backed answers while keeping data inside your control plane.
+            </p>
+        </section>
+
+        <section id="architecture">
+            <h2>System Architecture Overview</h2>
+            
+            <p>The system relies on a RAG (Retrieval Augmented Generation) loop to inject context into the LLM before it generates an answer.</p>
+
+            <div class="q-img-box">
+                <img src="https://i.ibb.co/V0J1nnmV/blog-5-2.jpg" alt="Architecture diagram: documents to vector DB to LangChain to private LLM">
+            </div>
+
+            <pre class="q-code-block">
+Sources → Ingestion & Chunking → Embeddings → Vector Database
+                                    ↓
+                        LangChain Retrieval Pipeline
+                                    ↓
+        Private LLM Instance (OpenAI API or Self-Hosted)
+                                    ↓
+                        Secure Enterprise UI</pre>
+
+            <h3>Layer Responsibilities</h3>
+            <div class="q-grid">
+                <div class="q-card">
+                    <h3>Ingestion</h3>
+                    <p>Normalization of PDFs, Confluence, and JIRA tickets. Chunking strategy is key here.</p>
+                </div>
+                <div class="q-card">
+                    <h3>Vector DB</h3>
+                    <p>Stores semantic embeddings (Pinecone, Qdrant) for similarity search.</p>
+                </div>
+                <div class="q-card">
+                    <h3>LangChain</h3>
+                    <p>Orchestrates the retrieval, prompt injection, and context window management.</p>
+                </div>
+                <div class="q-card">
+                    <h3>Secure UI</h3>
+                    <p>Frontend with SSO enforcement, source citations, and session history.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>1. Document Ingestion &amp; Preprocessing</h2>
+            <div class="q-grid">
+                <div class="q-card">
+                    <h3>Sources</h3>
+                    <p>Confluence, Google Drive, internal wikis, PDFs, JIRA tickets, code comments, design docs.</p>
+                </div>
+                <div class="q-card">
+                    <h3>Preprocessing</h3>
+                    <p>OCR where necessary, text normalization, remove PII (if required), chunking with overlap tuned to model context length.</p>
+                </div>
+                <div class="q-card">
+                    <h3>Metadata</h3>
+                    <p>Attach source, author, timestamp, doc version and relevance score for traceability and citation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Embeddings &amp; Vector Database</h2>
+            <p>Compute embeddings for chunks and store them in a fast vector DB. Recommended options:</p>
+            <ul>
+                <li><strong>Pinecone</strong> — Managed, scalable, easy to start.</li>
+                <li><strong>Qdrant</strong> — Open-source, highly performant, Rust-based.</li>
+                <li><strong>Weaviate</strong> — Strong schema + vector capabilities.</li>
+                <li><strong>Chroma</strong> — Excellent for local development or air-gapped setups.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Retrieval-Augmented Generation (RAG)</h2>
+            <p>LangChain ties retrieval to prompting: select top-k relevant chunks, trim for context window, and build conservative prompts that force source attribution.</p>
+            
+            <div class="q-img-box">
+                <img src="https://i.ibb.co/mFcJh5FV/blog-5-3.jpg" alt="RAG pipeline visualization">
+            </div>
+
+            <h3>Best Practices</h3>
+            <ul>
+                <li>Tune chunk size to the LLM context window; avoid over-long context that causes truncation.</li>
+                <li>Rerank retrieved chunks using lightweight models (Cross-Encoders) for precision.</li>
+                <li>Enforce a "no hallucination" policy in prompts: return "I don't know" when confidence is low.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Secure LLM Deployment</h2>
+            <p>Deploy the model in a private, auditable environment. Options include Private OpenAI enterprise endpoints (VPC peering) or self-hosted open-source models (Llama 3, Mistral).</p>
+            <h3>Security Controls</h3>
+            <ul>
+                <li>Network isolation and egress restrictions for model endpoints.</li>
+                <li>SSO (SAML/OIDC) with RBAC for access controls.</li>
+                <li>Encryption at rest &amp; in transit; KMS for key management.</li>
+                <li>Audit logging for queries; data retention policies to flush raw prompts.</li>
+            </ul>
+        </section>
+
+        <section id="deployment">
+            <h2>Deployment Workflow</h2>
+            <ul class="q-process-list">
+                <li>Collect documentation sources</li>
+                <li>Clean and chunk content</li>
+                <li>Generate embeddings and store in Vector DB</li>
+                <li>Build RAG pipeline with LangChain</li>
+                <li>Connect to private LLM endpoint</li>
+                <li>Wrap with security layer (Auth, RBAC, logging)</li>
+                <li>Deploy internal UI</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Business Impact</h2>
+            <table class="q-table">
+                <thead>
+                    <tr><th>Metric</th><th>Before</th><th>After</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Time to find info</td><td>15–45 minutes</td><td>&lt; 10 seconds</td></tr>
+                    <tr><td>Onboarding time</td><td>4–6 weeks</td><td>2–3 weeks</td></tr>
+                    <tr><td>Support tickets</td><td>High Volume</td><td>Reduced by 40%</td></tr>
+                    <tr><td>Doc Usage</td><td>Low</td><td>High (Conversational)</td></tr>
+                </tbody>
+            </table>
+            
+            <div style="background:var(--q-highlight-bg); padding:15px; border-radius:6px; border:1px solid var(--q-card-border); border-left: 4px solid var(--q-accent);">
+                <strong>Result:</strong> Enterprise teams adopted the bot as a daily productivity tool—measurable ROI came from reduced context-switching and faster time-to-resolution.
+            </div>
+        </section>
+
+        <section id="contact" class="q-footer">
+            <h3>Need Help Building This?</h3>
+            <p>
+                I can produce: a landing page, one-page executive PDF, a full pitch deck, production-ready architecture diagrams, or a developer onboarding guide.
+            </p>
+             <div style="margin: 20px 0;">
+                <p><strong>Email:</strong> <a href="mailto:info@quagnitia.co.in" style="color:var(--q-accent);">info@quagnitia.co.in</a></p>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

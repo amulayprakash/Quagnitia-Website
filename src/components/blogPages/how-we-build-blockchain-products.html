@@ -5,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quagnitia | How We Build Blockchain & Mobile Products</title>
     <style>
-        /* SCOPING: All styles are prefixed with .q-scope to prevent 
-           leaking into the rest of your website if embedded.
-        */
-
+        /* SCOPING: All styles are prefixed with .q-scope */
         .q-scope {
             /* Theme Variables */
             --q-bg: #EFF4FA;
             --q-text: #1A2635;
             --q-muted: #56677C;
             --q-accent: #FF7F33;
-            --q-card-bg: rgba(30, 90, 170, 0.06);
-            --q-border: rgba(26, 38, 53, 0.18);
+            --q-card-bg: #ffffff;
+            --q-card-border: rgba(26, 38, 53, 0.18);
+            --q-highlight-bg: rgba(30, 90, 170, 0.06);
             
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--q-bg);
@@ -41,22 +39,23 @@
 
         .q-scope h1 {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             line-height: 1.2;
         }
 
         .q-scope h2 {
             font-size: 1.8rem;
-            border-bottom: 2px solid var(--q-border);
+            border-bottom: 2px solid var(--q-card-border);
             padding-bottom: 10px;
-            margin-bottom: 20px;
-            margin-top: 40px;
+            margin-bottom: 25px;
+            margin-top: 50px;
         }
 
         .q-scope h3 {
             font-size: 1.25rem;
             margin-bottom: 10px;
-            color: var(--q-text);
+            margin-top: 25px;
+            color: var(--q-accent); /* Accented subheads */
         }
 
         .q-scope p {
@@ -66,17 +65,18 @@
 
         .q-scope strong {
             color: var(--q-text);
+            font-weight: 700;
         }
 
         /* Components */
         .q-hero {
             text-align: center;
-            padding-bottom: 20px;
+            padding-bottom: 40px;
         }
 
         .q-lead {
             font-size: 1.2rem;
-            color: var(--q-text);
+            color: var(--q-text) !important;
             max-width: 700px;
             margin: 0 auto 20px auto;
         }
@@ -98,9 +98,7 @@
             margin: 5px;
         }
         
-        .q-btn:hover {
-            opacity: 0.9;
-        }
+        .q-btn:hover { opacity: 0.9; }
 
         .q-btn.secondary {
             background-color: transparent;
@@ -116,14 +114,12 @@
             flex-wrap: wrap;
             margin: 40px 0;
             padding: 20px;
-            background: var(--q-card-bg);
+            background: var(--q-highlight-bg);
             border-radius: 8px;
-            border: 1px solid var(--q-border);
+            border: 1px solid var(--q-card-border);
         }
 
-        .q-metric-item {
-            text-align: center;
-        }
+        .q-metric-item { text-align: center; }
 
         .q-metric-val {
             display: block;
@@ -142,13 +138,13 @@
         /* Grid Layouts */
         .q-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 24px;
         }
 
         .q-card {
-            background: #fff;
-            border: 1px solid var(--q-border);
+            background: var(--q-card-bg);
+            border: 1px solid var(--q-card-border);
             padding: 28px;
             border-radius: 8px;
             transition: transform 0.2s;
@@ -159,25 +155,39 @@
             border-color: var(--q-accent);
         }
 
-        /* Image Placeholder Styling */
-        .q-img-box {
-            width: 100%;
-            background-color: #E0E6ED;
-            border: 2px dashed var(--q-border);
+        /* Featured Section styling */
+        .q-featured {
+            background: #fff;
+            border: 1px solid var(--q-card-border);
+            padding: 40px;
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--q-muted);
-            font-weight: 600;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
-        .q-hero-img { height: auto; }
-        .q-section-img { height: auto; }
-        .q-team-img { height: auto; }
+        .q-callout {
+            background: var(--q-highlight-bg);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border-left: 5px solid var(--q-accent);
+        }
+
+        /* Images */
+        .q-img-box {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid var(--q-card-border);
+        }
+
+        .q-team-img {
+            max-height: 300px;
+            object-position: top;
+        }
 
         /* Lists */
         .q-process-list {
@@ -208,6 +218,7 @@
             font-weight: bold;
         }
 
+        /* Tags */
         .q-meta-tags {
             display: flex;
             flex-wrap: wrap;
@@ -216,7 +227,7 @@
         }
 
         .q-tag {
-            background-color: var(--q-card-bg);
+            background-color: var(--q-highlight-bg);
             color: var(--q-accent);
             padding: 5px 15px;
             border-radius: 20px;
@@ -224,36 +235,28 @@
             font-weight: 600;
         }
 
-        /* Footer/Contact specific */
+        /* Footer */
         .q-footer {
             background-color: #fff;
-            padding: 30px;
+            padding: 40px;
             border-radius: 8px;
-            border: 1px solid var(--q-border);
-        }
-        
-        .q-form-stub {
-            margin-top: 20px;
-            padding: 15px;
-            background: var(--q-card-bg);
-            border-left: 4px solid var(--q-accent);
-            color: var(--q-muted);
-            font-style: italic;
+            border: 1px solid var(--q-card-border);
+            margin-top: 60px;
+            text-align: center;
         }
 
         @media (max-width: 600px) {
             .q-scope { padding: 20px; }
             .q-hero h1 { font-size: 2rem; }
             .q-metrics { gap: 20px; }
+            .q-featured { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- WRAPPER CLASS: .q-scope -->
     <div class="q-scope">
 
-        <!-- Hero -->
         <div class="q-hero">
             <h1>How We Build Production-Ready Blockchain & Mobile Products</h1>
             <p class="q-lead">A practical, engineering-first look at how the Quagnitia team takes Web3 ideas from draft to deployed systems.</p>
@@ -264,13 +267,11 @@
                 <a href="#featured-post" class="q-btn secondary">Read the Full Breakdown</a>
             </div>
 
-            <div >
-               <img class="q-img-box q-hero-img" src="https://i.ibb.co/whB1XjwS/unnamed-2.jpg" alt="">
-            </div>
+            <img class="q-img-box" src="https://i.ibb.co/whB1XjwS/unnamed-2.jpg" alt="Quagnitia Team">
 
             <div class="q-metrics">
                 <div class="q-metric-item">
-                    <span class="q-metric-val">24+ yrs</span>
+                    <span class="q-metric-val">Two Decades</span>
                     <span class="q-metric-label">Software Delivery</span>
                 </div>
                 <div class="q-metric-item">
@@ -284,64 +285,60 @@
             </div>
         </div>
 
-        <!-- Featured Blog Post Section -->
-        <div id="featured-post" style="margin: 60px 0;">
-            <div class="q-card" style="padding: 40px;">
-                <span style="color: var(--q-accent); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 10px;">Deep-dive Article</span>
-                <h2 style="margin-top: 0; border-bottom: none; font-size: 2rem;">Inside Our Web3 Delivery Playbook</h2>
-                
-                <p style="font-size: 1.1rem; color: var(--q-text);">
-                    Most blockchain products fail for boring reasons: weak architecture, no testing discipline, poor integration with mobile and web. 
-                    This article walks through how we actually work at Quagnitia — the decisions we make, the tools we use, and the checkpoints we never skip.
-                </p>
-                
-                <h3 style="font-size: 1.2rem; margin-top: 30px; color: var(--q-accent);">What We Really Do All Day</h3>
-                <p>
-                    Quagnitia is not a logo-and-landing-page shop. Our work is heavy on <strong>engineering, infrastructure and security</strong>. 
-                    We design token models, write and test smart contracts, build admin dashboards, integrate wallets, ship mobile apps, 
-                    and stand up monitoring so production incidents are visible and actionable.
-                </p>
+        <div id="featured-post" class="q-featured">
+            <span style="color: var(--q-accent); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 10px;">Deep-dive Article</span>
+            <h2 style="margin-top: 0; border-bottom: none; font-size: 2rem;">Inside Our Web3 Delivery Playbook</h2>
+            
+            <p style="font-size: 1.1rem; color: var(--q-text);">
+                Most blockchain products fail for boring reasons: weak architecture, no testing discipline, poor integration with mobile and web. 
+                This article walks through how we actually work at Quagnitia—the decisions we make, the tools we use, and the checkpoints we never skip.
+            </p>
+            
+            <h3>What We Really Do All Day</h3>
+            <p>
+                Quagnitia is not a logo-and-landing-page shop. Our work is heavy on <strong>engineering, infrastructure, and security</strong>. 
+                We design token models, write and test smart contracts, build admin dashboards, integrate wallets, ship mobile apps, 
+                and stand up monitoring so production incidents are visible and actionable.
+            </p>
 
-                <p>
-                    The name comes from <strong>Qualis</strong> (Quality) and <strong>Agnito</strong> (Knowledge). 
-                    That shows up in how we work: clear documentation, boring but reliable tech choices, and a strong bias toward 
-                    traceability over “magic”.
-                </p>
+            <p>
+                The name comes from <strong>Qualis</strong> (Quality) and <strong>Agnito</strong> (Knowledge). 
+                That shows up in how we work: clear documentation, boring but reliable tech choices, and a strong bias toward 
+                traceability over “magic”.
+            </p>
 
-                <h3 style="font-size: 1.2rem; margin-top: 25px; color: var(--q-accent);">How We Approach a New Product</h3>
-                <p>
-                    We start with the problem, not the chain. Is this a tokenized loyalty system, a DAO, a game economy, or a DeFi protocol?
-                    From there, we choose the right stack: EVM chains, L2s, sidechains, or other platforms — and define what absolutely must 
-                    live on-chain versus what belongs off-chain for performance and cost reasons.
-                </p>
+            <h3>How We Approach a New Product</h3>
+            <p>
+                We start with the problem, not the chain. Is this a tokenized loyalty system, a DAO, a game economy, or a DeFi protocol?
+                From there, we choose the right stack—EVM chains, L2s, sidechains, or other platforms—and define what absolutely must 
+                live on-chain versus what belongs off-chain for performance and cost reasons.
+            </p>
 
-                <p>
-                    The result is a <strong>single, end-to-end architecture</strong> where the smart contracts, APIs, mobile apps, 
-                    and dashboards are designed together instead of bolted on later.
-                </p>
+            <p>
+                The result is a <strong>single, end-to-end architecture</strong> where the smart contracts, APIs, mobile apps, 
+                and dashboards are designed together instead of bolted on later.
+            </p>
 
-                <h3 style="font-size: 1.2rem; margin-top: 25px; color: var(--q-accent);">How to Work With Us</h3>
-                <p>
-                    You don’t need a perfect whitepaper to start. If you have a serious use-case and are willing to iterate, 
-                    we help you validate tokenomics, refine scope, and define a delivery plan that includes testnets, audits, and launch support.
+            <h3>How to Work With Us</h3>
+            <p>
+                You don’t need a perfect whitepaper to start. If you have a serious use-case and are willing to iterate, 
+                we help you validate tokenomics, refine scope, and define a delivery plan that includes testnets, audits, and launch support.
+            </p>
+            
+            <div class="q-callout">
+                <strong style="font-size: 1.1rem;">Want the unfiltered version?</strong>
+                <p style="margin-bottom: 0;">
+                    Send a short brief (even bullet points) to 
+                    <a href="mailto:info@quagnitia.co.in" style="color: var(--q-accent); font-weight: bold;">info@quagnitia.co.in</a> 
+                    with your idea, target users, and timeline. We’ll respond within one business day with 
+                    questions, risks we see, and concrete next steps.
                 </p>
-                
-                <div style="background: var(--q-bg); padding: 25px; border-radius: 8px; margin-top: 30px; border-left: 5px solid var(--q-accent);">
-                    <strong style="font-size: 1.1rem;">Want the unfiltered version?</strong>
-                    <p style="margin-bottom: 0;">
-                        Send a short brief (even bullet points) to 
-                        <a href="mailto:info@quagnitia.co.in" style="color: var(--q-accent); font-weight: bold;">info@quagnitia.co.in</a> 
-                        with your idea, target users, and timeline. We’ll respond within one business day with 
-                        questions, risks we see, and concrete next steps.
-                    </p>
-                </div>
             </div>
         </div>
 
-        <!-- Services as "What We Build" -->
         <div id="services">
             <h2>What We Build</h2>
-            <p>Concrete, production systems — not just prototypes. A non-fluffy overview of the work we actually deliver.</p>
+            <p>Concrete, production systems—not just prototypes. A non-fluffy overview of the work we actually deliver.</p>
             
             <div class="q-grid">
                 <div class="q-card">
@@ -389,10 +386,9 @@
             </div>
         </div>
 
-        <!-- About -->
         <div id="about">
             <h2>Who We Are</h2>
-            <img src="https://i.ibb.co/RkqTCZkh/unnamed.jpg" alt="" class ="q-img-box q-team-img"/>
+            <img src="https://i.ibb.co/RkqTCZkh/unnamed.jpg" alt="Quagnitia Office" class="q-img-box q-team-img"/>
             <p><strong>Quagnitia = Qualis (Quality) + Agnito (Knowledge).</strong></p>
             <p>
                 We’ve been building enterprise software since 2000. As public chains and smart contracts matured, 
@@ -402,7 +398,7 @@
 
             <p>
                 That means version control discipline, reproducible environments, CI/CD, code reviews, 
-                and security checklists — not heroic one-off deployments and “we’ll fix it in mainnet”.
+                and security checklists—not heroic one-off deployments and “we’ll fix it in mainnet”.
             </p>
 
             <h3>Who We Aim to Grow With</h3>
@@ -416,7 +412,6 @@
             </div>
         </div>
 
-        <!-- Process -->
         <div id="process">
             <h2>How We Deliver: Step-By-Step</h2>
             <p>A simplified view of our delivery pipeline. In reality, we loop and iterate, but these gates never disappear.</p>
@@ -474,27 +469,22 @@
             </ol>
         </div>
 
-        <!-- Contact Footer -->
-        <div id="contact" style="margin-top: 60px;">
-            <div class="q-footer">
-                <h2>Get in Touch</h2>
-                <p>
-                    If you’re planning to ship a serious blockchain or mobile product and want a 
-                    direct, engineering-driven partner, reach out with a short brief. No sales scripts.
-                </p>
-                
-                <div style="margin: 20px 0;">
-                    <p><strong>Email:</strong> <a href="mailto:info@quagnitia.co.in" style="color:var(--q-accent);">info@quagnitia.co.in</a></p>
-                    <p style="font-size: 0.9rem;">We usually respond within 24 hours on business days with clarifying questions and next steps.</p>
-                </div>
-
-                <p style="margin-top: 20px; font-size: 0.85rem; color: var(--q-muted);">
-                    © 2000 Quagnitia Systems Pvt. Ltd. All rights reserved.
-                </p>
+        <div id="contact" class="q-footer">
+            <h2 style="border:none; margin-top:0;">Get in Touch</h2>
+            <p>
+                If you’re planning to ship a serious blockchain or mobile product and want a 
+                direct, engineering-driven partner, reach out with a short brief. No sales scripts.
+            </p>
+            
+            <div style="margin: 30px 0;">
+                <p><strong>Email:</strong> <a href="mailto:info@quagnitia.co.in" style="color:var(--q-accent); font-weight:700;">info@quagnitia.co.in</a></p>
+                <p style="font-size: 0.9rem;">We usually respond within 24 hours on business days.</p>
             </div>
+
+            <p style="margin-top: 20px; font-size: 0.85rem; color: var(--q-muted);">
+                © 2000 Quagnitia Systems Pvt. Ltd. All rights reserved.
+            </p>
         </div>
 
-    </div> <!-- End .q-scope -->
-
-</body>
+    </div> </body>
 </html>

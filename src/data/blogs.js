@@ -24,11 +24,28 @@ export const blogs = [
   date: "November 26, 2025"
 },{
   id: 4,
+  slug: "secure-enterprise-knowledge-bot-llm-langchain-vector-search",
+  title: "Building a Secure Enterprise Knowledge Bot with LLMs, Vector Search, and Private Deployment",
+  image: "https://i.ibb.co/tpv3G6cc/blog-5-1.jpg",
+  description: "How to build a private, secure enterprise knowledge bot: ingestion, embeddings, vector DB, LangChain RAG, and private LLM deployment — with security controls, deployment workflow, and measurable business impact.",
+  date: "November 29, 2025"
+},
+{
+  id: 5,
   slug: "top-nft-trends-2025-digital-collectibles-utility-tokens",
   title: "Top NFT Trends of 2025: What’s Next for Digital Collectibles & Utility Tokens",
   image: "https://i.ibb.co/VppVzWX6/blog-4-2.jpg",
   description: "Explore the leading NFT trends of 2025 — utility-driven NFTs, AI-generated art, GameFi expansion, real-world asset tokenization, hybrid NFTs, and DeFi integration — and what they mean for creators, investors and developers.",
   date: "November 26, 2025",
+},
+{
+  id: 6,
+  slug: "real-time-media-recommendation-engine-as-a-service",
+  title: "Real-Time Media Recommendation Engine as a Service: How We Deliver Scalable Personalization for Streaming Platforms",
+  image: "https://i.ibb.co/WSQYgmM/blog-6-1.jpg",
+  description: "A deep look at how our company provides a real-time, scalable hybrid recommendation engine — combining collaborative filtering, content-based models, Redis caching, and microservices — to help streaming platforms increase user engagement by up to 45%.",
+  date: "November 26, 2025"
 }
+
 
 ];
