@@ -327,6 +327,34 @@ const services = [
         website: "https://opensea.io/collection/alphaislandclub",
       },
        {
+        id: "moose-society-01",
+        title: "Moose Society",
+        short:
+          "Exclusive NFT collection of unique Moose characters with community benefits.",
+        description:
+          "A vibrant ecosystem of digital collectibles featuring unique Moose characters. This project bridges community engagement with digital ownership, offering holders exclusive access to future drops and community events.",
+        date: "2024-03-01",
+        tech: ["ERC-721", "NFT", "Community Governance"],
+        images: [moose6, moose7, moose2, moose1],
+        socials: {
+          twitter: "https://x.com/moosesocietynft",
+        },
+      },
+      {
+        id: "crypt3d-punks-01",
+        title: "Crypt3D Punks",
+        short:
+          "3D evolutions of the classic Punk aesthetics in a modern digital art form.",
+        description:
+          "A collection that reimagines the iconic Punk aesthetic with high-quality 3D rendering. Crypt3D Punks brings a new dimension to digital identity and collectible art.",
+        date: "2024-03-15",
+        tech: ["ERC-721", "NFT", "3D Art"],
+        images: [punks1],
+        socials: {
+          twitter: "https://x.com/crypt3d_punks",
+        },
+      },
+      {
         id: "defi-01",
         title: "FUSDT Custom AMM & DEX ",
         short: "Custom AMM & DEX Development",
