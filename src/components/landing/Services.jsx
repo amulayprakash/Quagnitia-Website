@@ -188,14 +188,14 @@ const services = [
       },
       {
         id: "ai-vision-01",
-        title: "Industrial Computer Vision",
-        short:
-          "Automated quality control system using custom CNN models for manufacturing lines.",
-        description:
-          "A high-speed computer vision system designed to detect defects in manufacturing assembly lines. Utilizing custom Convolutional Neural Networks (CNNs) deployed on edge devices, the system identifies anomalies with 99.8% accuracy in real-time, automatically triggering rejection mechanisms.",
-        date: "2024-06-10",
-        tech: ["PyTorch", "OpenCV", "Edge Computing", "IoT Integration"],
-        images: [app2], // Reusing generic app image
+         title: "Intelligent Chatbot Integration",
+  short:
+    "Conversational AI module embedded into enterprise systems for automated customer interaction.",
+  description:
+    "A production-grade chatbot integrated across web and mobile platforms, leveraging LLM-based dialogue management and custom intent classification. The system handles FAQs, workflow automation, and escalations, reducing support load by 65% while maintaining consistent response quality.",
+  date: "2024-09-01",
+  tech: ["Node.js", "Python", "LLM APIs", "RAG Pipelines", "Webhook Automation"],
+  images: [app2] // Reusing generic app image
       },
       {
         id: "ai-recsys-01",
